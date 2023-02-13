@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Site</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://kit.fontawesome.com/0d04d1886f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="navbar">
+        <div class="logo">
+            <h1>Travel</h1>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#country">Places</a></li>
+                <li><a href="#">Discounts</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Booking</a></li>
+            </ul>
+        </div>
+        <div class="signup">
+            <a href="#">Sign Up</a>
+        </div>
+    </div>
+
+    <div id="body">
+        <center>
+            <div class="heading">
+                <h1>Travel With Us</h1>
+                <br>
+                <p>Unlimited sunshine and a whole lot of nothing is always just a flight away. Package your beach break and vacation escapades and you can save.</p>
+                <br>
+                <br>
+                <a href="#">Learn More</a>
+            </div>
+        </center>
+    </div>
+
+    <div id="country">
+        <center>
+            <h1>Places</h1>
+            <div class="tours">
+                <div class="places">
+                    <h2>Amsterdam</h2>
+                    <img src="images/amsterdam.jpg" style="width: 280px; height: 230px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 15% Off</a>
+                </div>
+                <div class="places">
+                    <h2>Switzerland</h2>
+                    <img src="images/switzerland.jpg" style="width: 280px; height: 230px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 20% Off</a>
+                </div>
+                <div class="places">
+                    <h2>Greece</h2>
+                    <img src="images/greece.jpg" style="width: 280px; height: 230px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 25% Off</a>
+                </div>
+            </div>
+
+            <div class="tours2">
+                <div class="places">
+                    <h2>Paris</h2>
+                    <img src="images/paris.jpg" style="width: 280px; height: 230px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 15% Off</a>
+                </div>
+                <div class="places">
+                    <h2>Spain</h2>
+                    <img src="images/spain.jpg" style="width: 280px; height: 230px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 30% Off</a>
+                </div>
+                <div class="places">
+                    <h2>Italy</h2>
+                    <img src="images/italy.jpg" style="width: 280px; height: 230px; border-radius: 12px;">
+                    <br>
+                    <br>
+                    <a href="#">Book Now 25% Off</a>
+                </div>
+            </div>
+
+            <div class="video">
+                <div class="places1">
+                    <h2>Amstredam Highlights</h2>
+                    <iframe width="420" height="315" src="https://www.youtube.com/embed/Oxv6IRcuNaI?autoplay=1&mute=1"></iframe>
+                    <br>
+                    <br>
+                </div>
+                <div class="places2">
+                    <h2>Greece Highlights</h2>
+                    <iframe width="420" height="315" src="https://www.youtube.com/embed/2X61DHwtVe4?autoplay=1&mute=1"></iframe>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </center>
+    </div>
+
+    <div id="contact">
+        <center>
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Us</h1>
+                <p><i class="fa-solid fa-envelope"></i>travelsite.@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>09123456789</p>
+
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <br>
+                    <button type="submit" class="btn">Submit</button>
+                    <br>
+                    <span id="msg"></span>
+                </form>
+            </div>
+        </center>
+    </div>
+
+    <div class="footer">
+        <a href="#">Copyright</a>
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookies</a>
+        <a href="#">Complaints</a>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbztxhCOuamVZU5ll5hlRALMJCb-Jk8tQswfLTr7sjFUp0xHXaRm-W4p_TlR2qUo3hJmWg/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+    
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully!"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
+</body>
+</html>
